@@ -1,0 +1,15 @@
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\bin\Debug\net10.0-windows\practica2.exe
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\bin\Debug\net10.0-windows\practica2.deps.json
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\bin\Debug\net10.0-windows\practica2.runtimeconfig.json
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\bin\Debug\net10.0-windows\practica2.dll
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\bin\Debug\net10.0-windows\practica2.pdb
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\obj\Debug\net10.0-windows\practica2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\obj\Debug\net10.0-windows\practica2.AssemblyInfoInputs.cache
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\obj\Debug\net10.0-windows\practica2.AssemblyInfo.cs
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\obj\Debug\net10.0-windows\practica2.csproj.CoreCompileInputs.cache
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\obj\Debug\net10.0-windows\practica2.sourcelink.json
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\obj\Debug\net10.0-windows\practica2.dll
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\obj\Debug\net10.0-windows\refint\practica2.dll
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\obj\Debug\net10.0-windows\practica2.pdb
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\obj\Debug\net10.0-windows\practica2.genruntimeconfig.cache
+C:\Users\gonza\Documents\USAC\2S2026\IPC2\IPC2_Practicas_2S2026_202504046\practica2\obj\Debug\net10.0-windows\ref\practica2.dll
