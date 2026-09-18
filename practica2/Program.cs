@@ -2,15 +2,27 @@ namespace practica2;
 
 static class Program
 {
-    /// <summary>
-    ///  The main entry point for the application.
-    /// </summary>
     [STAThread]
     static void Main()
     {
-        // To customize application configuration such as set high DPI settings or default font,
-        // see https://aka.ms/applicationconfiguration.
+        ListaCanciones canciones = new ListaCanciones();
+        Arbol arbolCanciones = new Arbol();
+
+        // Borrar archivos de imagen
+        if (File.Exists("arbol.dot"))
+        {
+            File.Delete("arbol.dot");
+        }
+
+        if (File.Exists("arbol.png"))
+        {
+            File.Delete("arbol.png");
+        }
+
+        if (File.Exists("cola.dot")) File.Delete("cola.dot");
+        if (File.Exists("cola.png")) File.Delete("cola.png");
+
         ApplicationConfiguration.Initialize();
-        Application.Run(new Form1());
+        Application.Run(new Form1(canciones));
     }    
 }

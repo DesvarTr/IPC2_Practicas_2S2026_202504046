@@ -1,0 +1,12 @@
+digraph AVL {
+    node [shape=circle];
+    "So What" -> "Bohemian Rhapsody";
+    "Bohemian Rhapsody" -> "Back In Black";
+    "Back In Black" -> "Blinding Lights";
+    "Bohemian Rhapsody" -> "Levitating";
+    "Levitating" -> "Claro de Luna";
+    "Levitating" -> "Para Elisa";
+    "So What" -> "Take Five";
+    "Take Five" -> "Sweet Child O' Mine";
+    "Take Five" -> "Watermelon Sugar";
+}

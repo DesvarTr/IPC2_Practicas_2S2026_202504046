@@ -1,0 +1,14 @@
+[
+    {
+        "titulo": "Bohemian Rhapsody",
+        "artista": "Queen",
+        "genero": "Rock",
+        "duracion": 6
+    },
+    {
+        "titulo": "Blinding Lights",
+        "artista": "The Weeknd",
+        "genero": "Pop",
+        "duracion": 3
+    }
+]

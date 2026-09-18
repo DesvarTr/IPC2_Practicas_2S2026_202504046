@@ -1,0 +1,50 @@
+[
+    {
+        "titulo": "Take Five",
+        "artista": "Dave Brubeck",
+        "genero": "Jazz",
+        "duracion": 5
+    },
+    {
+        "titulo": "Claro de Luna",
+        "artista": "Beethoven",
+        "genero": "Clásica",
+        "duracion": 8
+    },
+    {
+        "titulo": "Levitating",
+        "artista": "Dua Lipa",
+        "genero": "Pop",
+        "duracion": 3
+    },
+    {
+        "titulo": "Sweet Child O' Mine",
+        "artista": "Guns N' Roses",
+        "genero": "Rock",
+        "duracion": 4
+    },
+    {
+        "titulo": "So What",
+        "artista": "Miles Davis",
+        "genero": "Jazz",
+        "duracion": 5
+    },
+    {
+        "titulo": "Para Elisa",
+        "artista": "Beethoven",
+        "genero": "Clásica",
+        "duracion": 8
+    },
+    {
+        "titulo": "Watermelon Sugar",
+        "artista": "Harry Styles",
+        "genero": "Pop",
+        "duracion": 3
+    },
+    {
+        "titulo": "Back In Black",
+        "artista": "AC/DC",
+        "genero": "Rock",
+        "duracion": 4
+    }
+]
