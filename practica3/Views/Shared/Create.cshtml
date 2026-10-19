@@ -1,0 +1,23 @@
+@model practica3.Models.MascotaFormViewModel
+<h2>Registrar mascota</h2>
+<form asp-action="Create" method="post">
+  <div asp-validation-summary="ModelOnly"></div>
+
+  <label asp-for="Tipo"></label>
+  <select asp-for="Tipo" class="form-control">
+    <option>Perro</option><option>Gato</option><option>Ave</option><option>Tortuga</option>
+  </select>
+
+  <label asp-for="Nombre"></label>
+  <input asp-for="Nombre" class="form-control" />
+  <span asp-validation-for="Nombre"></span>
+
+  <label asp-for="Edad"></label>
+  <input asp-for="Edad" class="form-control" />
+
+  <label asp-for="Peso"></label>
+  <input asp-for="Peso" class="form-control" />
+
+  <button type="submit" class="btn btn-success">Guardar</button>
+  <a asp-action="Index">Cancelar</a>
+</form>

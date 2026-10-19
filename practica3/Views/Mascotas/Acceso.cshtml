@@ -1,0 +1,87 @@
+@model AccesoViewModel
+@{
+    ViewData["Title"] = "Acceso a información";
+    ViewData["Tab"] = "acceso";
+}
+
+<div class="row g-4">
+    <div class="col-lg-5">
+        <section class="panel">
+            <h2 class="panel-titulo">Registrar mascota</h2>
+            <form asp-action="Registrar" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger small mb-2"></div>
+                <partial name="_CamposMascota" model="Model.Form" />
+                <button type="submit" class="btn boton-principal mt-4">Registrar mascota</button>
+            </form>
+        </section>
+        <section class="panel mt-4">
+            <h2 class="panel-titulo">Consultar por código</h2>
+            <form asp-action="Acceso" method="get" class="row g-2">
+                <div class="col">
+                    <input name="consultar" type="number" min="1" class="form-control"
+                        placeholder="Código de la mascota" required />
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn boton-principal">Consultar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <div class="col-lg-7">
+        @if (Model.Detalle is { } d)
+        {
+            <section class="panel panel-consulta mb-4">
+                <div class="d-flex justify-content-between align-items-start">
+                    <h2 class="panel-titulo">@d.Nombre</h2>
+                    <a asp-action="Acceso" class="enlace-sutil">Cerrar consulta</a>
+                </div>
+                <dl class="ficha">
+                    <dt>Código</dt><dd>@d.Codigo</dd>
+                    <dt>Tipo</dt><dd>@d.Tipo</dd>
+                    <dt>Género</dt><dd>@d.Genero</dd>
+                    <dt>Edad</dt><dd>@d.Edad años</dd>
+                    <dt>Peso</dt><dd>@d.Peso kg</dd>
+                    <dt>Estado</dt>
+                    <dd><span class="etiqueta @(d.EstaEnfermo ? "etiqueta-enferma" : "etiqueta-sana")">@d.Estado</span></dd>
+                    <dt>Factor de dosis</dt><dd>@(d.FactorAjuste * 100)% de la dosis base</dd>
+                    <dt>Datos propios</dt><dd>@d.DetalleEspecifico</dd>
+                </dl>
+            </section>
+        }
+
+        <section class="panel">
+            <h2 class="panel-titulo">Mascotas registradas</h2>
+            @if (Model.Mascotas.Cantidad == 0)
+            {
+                <p class="vacio">Todavía no hay mascotas. Registre la primera con el formulario.</p>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table tabla align-middle">
+                        <thead>
+                            <tr><th>Código</th><th>Nombre</th><th>Tipo</th><th>Género</th><th>Estado</th><th></th></tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.Mascotas.Cantidad; i++)
+                            {
+                                var m = Model.Mascotas.ObtenerEn(i);
+                                <tr>
+                                    <td>@m.Codigo</td>
+                                    <td>@m.Nombre</td>
+                                    <td>@m.Tipo</td>
+                                    <td>@m.Genero</td>  
+                                    <td><span class="etiqueta @(m.EstaEnfermo ? "etiqueta-enferma" : "etiqueta-sana")">@m.Estado</span></td>
+                                    <td class="text-end">
+                                        <a class="btn btn-sm boton-secundario" asp-action="Acceso" asp-route-consultar="@m.Codigo">Consultar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </section>
+    </div>
+</div>

@@ -1,0 +1,130 @@
+/* Tema oscuro: grafito azulado con acento lavanda */
+:root {
+    --fondo: #0f121a;
+    --panel: #171b26;
+    --panel-alto: #1e2331;
+    --borde: #2b3245;
+    --texto: #e8ebf3;
+    --suave: #98a1b8;
+    --acento: #9db4ff;
+    --acento-fuerte: #7f9bff;
+    --sana: #7ddbb0;
+    --enferma: #ff9a8a;
+}
+
+html { font-size: 16px; }
+
+body {
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+    min-height: 100vh;
+}
+
+/* Cabecera con pestañas */
+.cabecera {
+    background: var(--panel);
+    border-bottom: 1px solid var(--borde);
+    padding-top: 1.25rem;
+}
+.marca {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 1rem;
+}
+.pestanas { display: flex; gap: .25rem; flex-wrap: wrap; }
+.pestana {
+    padding: .7rem 1.25rem;
+    color: var(--suave);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: .6rem .6rem 0 0;
+    margin-bottom: -1px;
+}
+.pestana:hover { color: var(--texto); }
+.pestana.activa {
+    color: var(--texto);
+    background: var(--fondo);
+    border-color: var(--borde);
+    box-shadow: inset 0 3px 0 var(--acento);
+}
+.pestana:focus-visible, .btn:focus-visible, .enlace-sutil:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 2px;
+}
+
+.contenido { padding-top: 1.75rem; padding-bottom: 3rem; }
+
+/* Paneles */
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: .75rem;
+    padding: 1.5rem;
+}
+.panel-titulo { font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem; }
+.panel-consulta { border-left: 3px solid var(--acento); }
+.panel-peligro { border-color: #4a2f35; }
+
+.texto-suave { color: var(--suave); }
+.vacio { color: var(--suave); padding: .5rem 0; }
+
+/* Formularios */
+.form-label { color: var(--suave); font-size: .9rem; margin-bottom: .3rem; }
+.form-control, .form-select {
+    background-color: var(--panel-alto);
+    border-color: var(--borde);
+    color: var(--texto);
+}
+.form-control:focus, .form-select:focus {
+    background-color: var(--panel-alto);
+    color: var(--texto);
+    border-color: var(--acento);
+    box-shadow: 0 0 0 .2rem rgba(157, 180, 255, .2);
+}
+.form-control:disabled { opacity: .7; }
+.form-check-input:checked { background-color: var(--acento-fuerte); border-color: var(--acento-fuerte); }
+
+/* Botones */
+.boton-principal { background: var(--acento); color: #0f121a; font-weight: 600; border: 0; }
+.boton-principal:hover { background: #b7c8ff; color: #0f121a; }
+.boton-secundario { background: transparent; color: var(--texto); border: 1px solid var(--borde); }
+.boton-secundario:hover { background: var(--panel-alto); color: var(--texto); border-color: var(--acento); }
+.boton-peligro { background: transparent; color: var(--enferma); border: 1px solid #6a3a42; }
+.boton-peligro:hover { background: #3a2227; color: var(--enferma); }
+.enlace-sutil { color: var(--suave); font-size: .9rem; }
+.enlace-sutil:hover { color: var(--texto); }
+
+/* Tabla */
+.tabla { --bs-table-bg: transparent; --bs-table-color: var(--texto); --bs-table-border-color: var(--borde); margin: 0; }
+.tabla thead th { color: var(--suave); font-weight: 500; border-bottom-color: var(--borde); }
+
+/* Etiquetas de estado */
+.etiqueta { display: inline-block; padding: .15rem .65rem; border-radius: 999px; font-size: .85rem; border: 1px solid; }
+.etiqueta-sana { color: var(--sana); border-color: rgba(125, 219, 176, .4); background: rgba(125, 219, 176, .08); }
+.etiqueta-enferma { color: var(--enferma); border-color: rgba(255, 154, 138, .4); background: rgba(255, 154, 138, .08); }
+
+/* Ficha de consulta */
+.ficha { display: grid; grid-template-columns: max-content 1fr; gap: .5rem 1.5rem; margin: 0; }
+.ficha dt { color: var(--suave); font-weight: 400; }
+.ficha dd { margin: 0; }
+
+/* Dosis */
+.resultado-dosis {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--panel-alto);
+    border-radius: .6rem;
+}
+.resultado-dosis strong { font-size: 1.75rem; color: var(--acento); font-variant-numeric: tabular-nums; }
+
+/* Avisos */
+.aviso { padding: .8rem 1.1rem; border-radius: .6rem; margin-bottom: 1.25rem; border: 1px solid; }
+.aviso-ok { color: var(--sana); border-color: rgba(125, 219, 176, .35); background: rgba(125, 219, 176, .07); }
+.aviso-error { color: var(--enferma); border-color: rgba(255, 154, 138, .35); background: rgba(255, 154, 138, .07); }

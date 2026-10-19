@@ -1,0 +1,40 @@
+@{
+    string tab = ViewData["Tab"] as string ?? "";
+}
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Clínica veterinaria</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="cabecera">
+        <div class="container">
+            <h1 class="marca">Clínica veterinaria</h1>
+            <nav class="pestanas" aria-label="Secciones">
+                <a class="pestana @(tab == "acceso" ? "activa" : "")" asp-controller="Mascotas" asp-action="Acceso">Acceso a información</a>
+                <a class="pestana @(tab == "admin" ? "activa" : "")" asp-controller="Mascotas" asp-action="Administracion">Administración de información</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container contenido">
+        @if (TempData["Mensaje"] is string mensaje)
+        {
+            <div class="aviso aviso-ok" role="status">@mensaje</div>
+        }
+        @if (TempData["Error"] is string error)
+        {
+            <div class="aviso aviso-error" role="alert">@error</div>
+        }
+        @RenderBody()
+    </main>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/veterinaria.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

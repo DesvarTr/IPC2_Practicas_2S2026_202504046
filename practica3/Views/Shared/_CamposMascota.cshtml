@@ -1,0 +1,138 @@
+@model MascotaFormViewModel
+@{
+    bool editando = ViewData["Editando"] as bool? ?? false;
+}
+
+<div class="row g-3">
+    <div class="col-12">
+        <label asp-for="Tipo" class="form-label">Tipo de mascota</label>
+        @if (editando)
+        {
+            <input type="hidden" asp-for="Tipo" />
+            <input class="form-control" value="@Model.Tipo" disabled />
+        }
+        else
+        {
+            <select asp-for="Tipo" class="form-select">
+                <option value="">Seleccione una mascota…</option>
+                <option value="Perro">Perro</option>
+                <option value="Gato">Gato</option>
+                <option value="Ave">Ave</option>
+                <option value="Tortuga">Tortuga</option>
+            </select>
+        }
+        <span asp-validation-for="Tipo" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12">
+        <label asp-for="Nombre" class="form-label">Nombre</label>
+        <input asp-for="Nombre" class="form-control" maxlength="60" required />
+        <span asp-validation-for="Nombre" class="text-danger small"></span>
+    </div>
+    <div class="col-6">
+        <label asp-for="Edad" class="form-label">Edad (años)</label>
+        <input asp-for="Edad" type="number" min="0" max="100" class="form-control" required />
+        <span asp-validation-for="Edad" class="text-danger small"></span>
+    </div>
+    <div class="col-12">
+    <span class="form-label d-block">Género</span>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" asp-for="EsHembra" value="false" id="genero-macho" />
+        <label class="form-check-label" for="genero-macho">Macho</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" asp-for="EsHembra" value="true" id="genero-hembra" />
+        <label class="form-check-label" for="genero-hembra">Hembra</label>
+    </div>
+    </div>
+    <div class="col-6">
+        <label asp-for="Peso" class="form-label">Peso (kg)</label>
+        <input asp-for="Peso" type="number" step="any" min="0.01" class="form-control" required />
+        <span asp-validation-for="Peso" class="text-danger small"></span>
+    </div>
+
+    @* ---------- Campos propios de cada tipo (se muestran según el tipo) ---------- *@
+
+    <div class="col-12 grupo-tipo" data-grupo-tipo="Perro" hidden>
+        <div class="row g-3">
+            <div class="col-6">
+                <label asp-for="Raza" class="form-label">Raza</label>
+                <input asp-for="Raza" class="form-control" />
+                <span asp-validation-for="Raza" class="text-danger small"></span>
+            </div>
+            <div class="col-6">
+                <label asp-for="Tamano" class="form-label">Tamaño</label>
+                <select asp-for="Tamano" class="form-select">
+                    <option value="">Seleccione…</option>
+                    <option value="Pequeño">Pequeño</option>
+                    <option value="Mediano">Mediano</option>
+                    <option value="Grande">Grande</option>
+                </select>
+                <span asp-validation-for="Tamano" class="text-danger small"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 grupo-tipo" data-grupo-tipo="Gato" hidden>
+        <div class="row g-3">
+            <div class="col-6">
+                <label asp-for="Raza" for="RazaGato" class="form-label">Raza</label>
+                <input asp-for="Raza" id="RazaGato" class="form-control" />
+                <span asp-validation-for="Raza" class="text-danger small"></span>
+            </div>
+            <div class="col-6">
+                <span class="form-label d-block">¿Está esterilizado?</span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="EstaEsterilizado" value="true" id="esterilizado-si" />
+                    <label class="form-check-label" for="esterilizado-si">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="EstaEsterilizado" value="false" id="esterilizado-no" />
+                    <label class="form-check-label" for="esterilizado-no">No</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 grupo-tipo" data-grupo-tipo="Ave" hidden>
+        <div class="row g-3">
+            <div class="col-6">
+                <label asp-for="Envergadura" class="form-label">Envergadura (cm)</label>
+                <input asp-for="Envergadura" type="number" step="any" min="0" class="form-control" />
+                <span asp-validation-for="Envergadura" class="text-danger small"></span>
+            </div>
+            <div class="col-6">
+                <span class="form-label d-block">¿Puede volar?</span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="PuedeVolar" value="true" id="volar-si" />
+                    <label class="form-check-label" for="volar-si">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="PuedeVolar" value="false" id="volar-no" />
+                    <label class="form-check-label" for="volar-no">No</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 grupo-tipo" data-grupo-tipo="Tortuga" hidden>
+        <div class="row g-3">
+            <div class="col-6">
+                <label asp-for="TipoCaparazon" class="form-label">Tipo de caparazón</label>
+                <input asp-for="TipoCaparazon" class="form-control" />
+                <span asp-validation-for="TipoCaparazon" class="text-danger small"></span>
+            </div>
+            <div class="col-6">
+                <span class="form-label d-block">¿Es acuática?</span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="EsAcuatica" value="true" id="acuatica-si" />
+                    <label class="form-check-label" for="acuatica-si">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="EsAcuatica" value="false" id="acuatica-no" />
+                    <label class="form-check-label" for="acuatica-no">No</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

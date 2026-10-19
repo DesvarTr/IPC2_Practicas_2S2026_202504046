@@ -1,0 +1,102 @@
+@model AdminViewModel
+@{
+    ViewData["Title"] = "Administración de información";
+    ViewData["Tab"] = "admin";
+    Mascota? activa = Model.Activa;
+}
+
+<section class="panel mb-4">
+    @if (activa == null)
+    {
+        <h2 class="panel-titulo">Elegir mascota</h2>
+        <p class="texto-suave">Escriba o elija el código o el nombre de una mascota. Al activarla se habilitan las operaciones.</p>
+        <form asp-action="Seleccionar" method="post" class="row g-2">
+            <div class="col">
+                <input name="codigo" list="lista-mascotas" class="form-control" placeholder="Código o nombre" autocomplete="off" required />
+                <datalist id="lista-mascotas">
+                    @for (int i = 0; i < Model.Mascotas.Cantidad; i++)
+                    {
+                        var m = Model.Mascotas.ObtenerEn(i);
+                        <option value="@m.Codigo">@m.Nombre (@m.Tipo)</option>
+                    }
+                </datalist>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn boton-principal">Activar mascota</button>
+            </div>
+        </form>
+        @if (Model.Mascotas.Cantidad == 0)
+        {
+            <p class="vacio mt-3 mb-0">No hay mascotas registradas. Regístrelas en la pestaña Acceso a información.</p>
+        }
+    }
+    else
+    {
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+                <p class="texto-suave mb-1">Mascota activa</p>
+                <h2 class="panel-titulo mb-0">
+                    @activa.Nombre
+                    <span class="texto-suave fs-6 fw-normal">código @activa.Codigo, @activa.Tipo, @activa.Genero</span>
+                </h2>
+            </div>
+            <form asp-action="QuitarSeleccion" method="post">
+                <button type="submit" class="btn boton-secundario">Quitar selección</button>
+            </form>
+        </div>
+    }
+</section>
+
+@if (activa != null)
+{
+    <div class="row g-4">
+        <div class="col-lg-7">
+            <section class="panel">
+                <h2 class="panel-titulo">Editar información</h2>
+                <form asp-action="Editar" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger small mb-2"></div>
+                    <partial name="_CamposMascota" model="Model.Form"
+                             view-data='new ViewDataDictionary(ViewData) { { "Editando", true } }' />
+                    <button type="submit" class="btn boton-principal mt-4">Guardar cambios</button>
+                </form>
+            </section>
+        </div>
+
+        <div class="col-lg-5 d-flex flex-column gap-4">
+            <section class="panel">
+                <h2 class="panel-titulo">Estado de salud</h2>
+                <p>
+                    <span class="etiqueta @(activa.EstaEnfermo ? "etiqueta-enferma" : "etiqueta-sana")">@activa.Estado</span>
+                </p>
+                <form asp-action="CambiarEstado" method="post">
+                    <button type="submit" class="btn boton-secundario">
+                        @(activa.EstaEnfermo ? "Marcar como sana" : "Marcar como enferma")
+                    </button>
+                </form>
+            </section>
+
+            <section class="panel">
+                <h2 class="panel-titulo">Calcular dosis</h2>
+                <p class="texto-suave">
+                    Peso de @activa.Nombre: @activa.Peso kg. Factor de @activa.Tipo.ToLower():
+                    @(activa.FactorAjuste * 100)% de la dosis base.
+                </p>
+                <label for="dosisPorKg" class="form-label">Dosis por kilogramo (mg/kg)</label>
+                <input id="dosisPorKg" type="number" step="any" min="0" class="form-control"
+                       data-url="@Url.Action("CalcularDosis", "Mascotas")" placeholder="Ej. 2.5" />
+                <div class="resultado-dosis" aria-live="polite">
+                    <span class="texto-suave">Dosis total</span>
+                    <strong id="dosisResultado">—</strong>
+                </div>
+            </section>
+
+            <section class="panel panel-peligro">
+                <h2 class="panel-titulo">Eliminar mascota</h2>
+                <p class="texto-suave">Esta acción borra a @activa.Nombre de la lista y no se puede deshacer.</p>
+                <form asp-action="Eliminar" method="post" data-confirmar="¿Eliminar a @activa.Nombre?">
+                    <button type="submit" class="btn boton-peligro">Eliminar mascota</button>
+                </form>
+            </section>
+        </div>
+    </div>
+}
